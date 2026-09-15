@@ -1,0 +1,30 @@
+# ------------------------------------------------------------------
+# Daily Website Checker - settings
+# Change this file to choose WHAT gets checked. No code changes needed.
+# true = check is ON, false = check is OFF
+# ------------------------------------------------------------------
+
+settings:
+  timeout_seconds: 15       # give up if the website takes longer than this
+  slow_response_ms: 3000    # warn if the page takes longer than this (milliseconds)
+  ssl_warning_days: 14      # warn if the SSL certificate expires in fewer days than this
+  notify: always            # always          = send the report every day
+                            # only_on_problem = send only when something is wrong
+
+sites:
+  # Copy this block (from "- name" down) to check more websites.
+  - name: My GitHub Profile
+    url: https://github.com/ALPHAMAN-0   # <-- put your website URL here
+    checks:
+      status: true                    # show the HTTP status code (200, 404, 500...)
+                                      # (up/down is ALWAYS checked)
+      response_time: true             # how fast the server answered
+      title: true                     # the <title> of the page
+      description: true               # the <meta name="description"> text
+      ssl_expiry: true                # days until the HTTPS certificate expires
+      elements:                       # text from any part of the page (CSS selectors)
+        - label: Main heading         # a name for it in the report
+          selector: h1                # which element to read
+        # - label: Price
+        #   selector: .product-price
+        # Use "elements: []" to turn this check off.
