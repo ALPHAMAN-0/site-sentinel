@@ -8,7 +8,6 @@ Local test (prints the report, sends nothing):
     python check_website.py --dry-run
 """
 
-import utils.net
 import utils.clients
 import utils.http_session
 import utils.transport
